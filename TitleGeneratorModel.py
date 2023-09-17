@@ -54,3 +54,30 @@ BUFFER_SIZE = 10000
 dataset = dataset.shuffle(BUFFER_SIZE).batch(BATCH_SIZE, drop_remainder=True)
 
 dataset
+
+""" Red Neuronal Recurrente (RNN) """
+# Longitud del vocabulario basado en los caracteres unicos
+vocab_size = len(vocab)
+
+embedding_dim = 100
+rnn_units = 100
+
+def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
+    model = tf.keras.Sequential([
+        tf.keras.layers.Embedding(vocab_size, embedding_dim,
+                                  batch_input_shape=[batch_size, None]),
+        tf.keras.layers.GRU(rnn_units,
+                            return_sequences=True,
+                            stateful=True,
+                            recurrent_initializer='glorot_uniform'),
+        tf.keras.layers.Dense(vocab_size)
+    ])
+    return model
+  
+model = build_model(
+    vocab_size=len(vocab),
+    embedding_dim=embedding_dim,
+    rnn_units=rnn_units,
+    batch_size=BATCH_SIZE)
+
+model.summary()
