@@ -81,3 +81,17 @@ model = build_model(
     batch_size=BATCH_SIZE)
 
 model.summary()
+
+""" Funcion de perdida (Machine Learning) para entrenar la RNN """
+def loss(labels, logits):
+    return tf.keras.losses.sparse_categorical_crossentropy(labels, logits, from_logits=True)
+
+model.compile(optimizer='adam', loss=loss,run_eagerly=True)
+# Directory where the checkpoints will be saved
+checkpoint_dir = './training_checkpoints'
+# Name of the checkpoint files
+checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
+
+checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath=checkpoint_prefix,
+    save_weights_only=True)
