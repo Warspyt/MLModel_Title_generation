@@ -99,3 +99,4 @@ checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
 """ Entrenamiento de la RNN """
 EPOCHS = 50
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
+
