@@ -94,9 +94,14 @@ checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
 checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_prefix,
+
     save_weights_only=True)
 
 """ Entrenamiento de la RNN """
 EPOCHS = 50
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
 
+""" Modelo con la menor valor de perdida """
+model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
+model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
+model.build(tf.TensorShape([1, None]))
