@@ -137,3 +137,21 @@ def generate_text(model, start_string,t):
         text_generated.append(idx2char[predicted_id])
 
     return (start_string + ''.join(text_generated))
+
+
+""" Generación de títulos de prueba """
+
+titulo_1 = (generate_text(model, start_string=u"Labor Restructuring",t = 0.1))
+print(titulo_1)
+
+titulo_2 = (generate_text(model, start_string=u"Concert",t = 0.3))
+print(titulo_2)
+
+titulo_3 = (generate_text(model, start_string=u"Earthquake",t = 0.5))
+print(titulo_3)
+
+titulo_4 = (generate_text(model, start_string=u"Crisis",t = 0.8))
+print(titulo_4)
+
+titulo_5 = (generate_text(model, start_string=u"Virus",t = 1))
+print(titulo_5)
