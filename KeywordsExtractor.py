@@ -1,4 +1,7 @@
 import stanfordnlp
-stanfordnlp.download('en')
 
-nlp = stanfordnlp.Pipeline(lang='en')
+""" Instalacion de los modulos de la libreria """
+# stanfordnlp.download('en')
+
+""" Configuracion de los procesadores """
+nlp = stanfordnlp.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse')
