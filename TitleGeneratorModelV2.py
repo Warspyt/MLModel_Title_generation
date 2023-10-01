@@ -6,8 +6,17 @@ from simplet5 import SimpleT5
 # ! pip install simplet5 -q
 
 """ Importar dataset de entrenamiento"""
+# Dataset 1
 df = pd.read_csv("Datasets\\news_summary.csv", encoding='latin-1', usecols=['headlines', 'text'])
 df.head()
+
+# Dataset 2
+# df = pd.read_csv("Datasets\\news_summary_more.csv", encoding='latin-1', usecols=['headlines', 'text'])
+# df.head()
+
+# Dataset 3
+# df = pd.read_csv("Datasets\arxiv_data.csv", encoding='latin-1', usecols=['headlines', 'text'])
+# df.head()
 
 df = df.rename(columns={"headlines":"target_text", "text":"source_text"})
 df = df[['source_text', 'target_text']]
