@@ -19,7 +19,7 @@ def generate_Title(summarize: str) -> str:
         titlesValid = [i for i in titles if (i != "" and len(i) > 10)]
         print(titlesValid)
         titleSelect = r.randint(0, len(titlesValid) - 1)
-        newsTitle = titles[titleSelect]
+        newsTitle = titlesValid[titleSelect]
         
     except:
         newsTitle = "Error: An exception occurred"
