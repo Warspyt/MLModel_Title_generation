@@ -48,7 +48,7 @@ model.train(train_df=train_df,
 
 """ Pruebas del modelo """
 # Cargar el modelo entrenado
-model.load_model("t5","outputs/simplet5-epoch-0-train-loss-1.5979-val-loss-1.2251", use_gpu=False)
+model.load_model("t5","outputs/simplet5-epoch-0-train-loss-1.2504-val-loss-1.0521", use_gpu=False)
 
 """ Texto obtenido de una noticia real """
 text_summarize="""The planned five-month-long expedition, due to set off in April 2024, aims to voyage the Amazon’s full length, using modern river-mapping satellite technology to scientifically prove once and for all that the Amazon is not just the world’s most voluminous river, but its longest.

@@ -12,12 +12,13 @@ def generate_Title(summarize: str) -> str:
     try:
         # Cargar el modelo entrenado
         model = SimpleT5()
-        model.load_model("t5","../outputs/simplet5-epoch-0-train-loss-1.5979-val-loss-1.2251", use_gpu=False)
+        model.load_model("t5","outputs/simplet5-epoch-0-train-loss-1.2504-val-loss-1.0521", use_gpu=False)
         
         options = model.predict(summarize)
         titles = options[0].split(".")
         titlesValid = [i for i in titles if i != ""]
-        titleSelect = r.randint(0, len(titles) - 1)
+        print(titlesValid)
+        titleSelect = r.randint(0, len(titlesValid) - 1)
         newsTitle = titles[titleSelect]
         
     except:
