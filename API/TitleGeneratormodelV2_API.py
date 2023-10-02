@@ -7,7 +7,7 @@ app = FastAPI()
 
 @app.get("/title-generator/{summarize}")
 
-def generate_Title(summarize: str) -> str:
+def generate_Title(summarize: str) -> list:
     
     try:
         # Cargar el modelo entrenado
@@ -16,12 +16,9 @@ def generate_Title(summarize: str) -> str:
         
         options = model.predict(summarize)
         titles = options[0].split(".")
-        titlesValid = [i for i in titles if (i != "" and len(i) > 10)]
-        print(titlesValid)
-        titleSelect = r.randint(0, len(titlesValid) - 1)
-        newsTitle = titlesValid[titleSelect]
+        newsTitle = [i for i in titles if (i != "" and len(i) > 10)]
         
     except:
-        newsTitle = "Error: An exception occurred"
+        newsTitle = ["Error: An exception occurred"]
     
     return newsTitle
