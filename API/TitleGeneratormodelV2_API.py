@@ -16,6 +16,7 @@ def generate_Title(summarize: str) -> list:
         
         options = model.predict(summarize)
         titles = options[0].split(".")
+        # Lista de titulos sugeridos
         newsTitle = [i for i in titles if (i != "" and len(i) > 10)]
         
     except:
